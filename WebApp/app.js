@@ -97,6 +97,13 @@ async function main() {
     if (await isWebBluetoothSupported()) {
         await connectToArduino();
     }
+  const permissionGranted = await requestSensorPermission();
+  if (permissionGranted) {
+    // Continue with your code to connect to the Arduino Nano 33 BLE and handle sensor data
+    await connectToArduino();
+  } else {
+    alert('Permission to access sensors was denied.');
+  }
 }
 
 // Call the main function
